@@ -41,7 +41,7 @@ public class Application extends Controller {
 
 	private static List<Evento> criarEventosFakes() {
 		try {
-			List<Evento> eventos = new ArrayList<>();
+			List<Evento> eventos = new ArrayList<Evento>();
 			Evento evento;
 			Calendar calendar;
 	
