@@ -15,7 +15,6 @@ import models.exceptions.PessoaInvalidaException;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.index;
 
 public class Application extends Controller {
 	
@@ -30,7 +29,10 @@ public class Application extends Controller {
 
 			criouEventosFake = true;
 		}
-        return ok(index.render());
+		if (session().get("user") == null) {
+			return redirect(routes.Login.show());
+		}
+        return ok(views.html.index.render());
     }
 
 	public static GenericDAO getDao(){
@@ -155,7 +157,7 @@ public class Application extends Controller {
 			criarEvento(evento);
 			
 			return eventos;
-		} catch (EventoInvalidoException _) {
+		} catch (EventoInvalidoException e) {
 			return null;
 		}
 	}
@@ -163,27 +165,27 @@ public class Application extends Controller {
 	private static void criarParticipacoesFake(List<Evento> eventos) {
 		Random rnd = new Random();
 		try {
-			criarParticipacao(new Participante("Alberto Leça", "alberto_leca@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Alberto Leça", "alberto_leca@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Alberto Leça", "alberto_leca@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Belmifer Linares", "belmifer_linares@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Belmifer Linares", "belmifer_linares@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Célia Rúa", "celia_rua@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Deolindo Castello Branco", "deolindo_castello@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Doroteia Pasos", "doroteia_passos@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Eugénio Palhares", "eugenio_palhares@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Fausto Furtado", "fausto_furtado@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Filipa Leiria", "filipa_leiria@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Leonilde Figueiredo", "leonilde_figueiredo@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Pascoal Caldeira", "pascoal_caldeira@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Paula Lousado", "paula_lousado@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Quitério Galindo","quiterio_galindo@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Rosa Varejão", "rosa_varejao@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Sonia Gabeira", "sonia_gabeira@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Érico Albuquerque", "erico_albuquerque@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Érico Albuquerque", "erico_albuquerque@mail.com", eventos.get(rnd.nextInt(3))));
-			criarParticipacao(new Participante("Tairine Reis", "tairine_reis@mail.com", eventos.get(rnd.nextInt(3))));
-		} catch (PessoaInvalidaException _) { }
+			criarParticipacao(new Participante("Alberto Leça", "123456", "alberto_leca@mail.com"));
+			criarParticipacao(new Participante("Alberto Leça", "123456", "alberto_leca@mail.com"));
+			criarParticipacao(new Participante("Alberto Leça", "123456", "alberto_leca@mail.com"));
+			criarParticipacao(new Participante("Belmifer Linares", "123456", "belmifer_linares@mail.com"));
+			criarParticipacao(new Participante("Belmifer Linares", "123456", "belmifer_linares@mail.com"));
+			criarParticipacao(new Participante("Célia Rúa", "123456", "celia_rua@mail.com"));
+			criarParticipacao(new Participante("Deolindo Castello Branco", "123456", "deolindo_castello@mail.com"));
+			criarParticipacao(new Participante("Doroteia Pasos", "123456", "doroteia_passos@mail.com"));
+			criarParticipacao(new Participante("Eugénio Palhares", "123456", "eugenio_palhares@mail.com"));
+			criarParticipacao(new Participante("Fausto Furtado", "123456", "fausto_furtado@mail.com"));
+			criarParticipacao(new Participante("Filipa Leiria", "123456", "filipa_leiria@mail.com"));
+			criarParticipacao(new Participante("Leonilde Figueiredo", "123456", "leonilde_figueiredo@mail.com"));
+			criarParticipacao(new Participante("Pascoal Caldeira", "123456", "pascoal_caldeira@mail.com"));
+			criarParticipacao(new Participante("Paula Lousado", "123456", "paula_lousado@mail.com"));
+			criarParticipacao(new Participante("Quitério Galindo", "123456", "quiterio_galindo@mail.com"));
+			criarParticipacao(new Participante("Rosa Varejão", "123456", "rosa_varejao@mail.com"));
+			criarParticipacao(new Participante("Sonia Gabeira", "123456", "sonia_gabeira@mail.com"));
+			criarParticipacao(new Participante("Érico Albuquerque", "123456", "erico_albuquerque@mail.com"));
+			criarParticipacao(new Participante("Érico Albuquerque", "123456", "erico_albuquerque@mail.com"));
+			criarParticipacao(new Participante("Tairine Reis", "123456", "tairine_reis@mail.com"));
+		} catch (PessoaInvalidaException e) { }
 	}
 	
 	@Transactional
