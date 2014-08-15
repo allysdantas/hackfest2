@@ -54,10 +54,10 @@ public class Evento {
 
 	public Evento(String titulo, String descricao, Date data, List<Tema> temas)
 			throws EventoInvalidoException {
-		setTitulo(titulo);
-		setDescricao(descricao);
-		setData(data);
-		setTemas(temas);
+		isSetTitulo(titulo);
+		isSetDescricao(descricao);
+		isSetData(data);
+		isSetTemas(temas);
 	}
 
 	public String getTitulo() {
@@ -85,6 +85,10 @@ public class Evento {
 	}
 
 	public void setTitulo(String titulo) throws EventoInvalidoException {
+		isSetTitulo(titulo);
+	}
+
+	private void isSetTitulo(String titulo) throws EventoInvalidoException {
 		isNull(titulo);
 		if (titulo.length() > 40) {
 			throw new EventoInvalidoException("Título longo");
@@ -93,6 +97,11 @@ public class Evento {
 	}
 
 	public void setDescricao(String descricao) throws EventoInvalidoException {
+		isSetDescricao(descricao);
+	}
+
+	private void isSetDescricao(String descricao)
+			throws EventoInvalidoException {
 		isNull(descricao);
 		if (descricao.length() > 450) {
 			throw new EventoInvalidoException("Descrição longa");
@@ -101,6 +110,10 @@ public class Evento {
 	}
 
 	public void setData(Date data) throws EventoInvalidoException {
+		isSetData(data);
+	}
+
+	private void isSetData(Date data) throws EventoInvalidoException {
 		isNull(data);
 		if (data.compareTo(new Date()) < 0) {
 			throw new EventoInvalidoException("Data inválida");
@@ -109,6 +122,10 @@ public class Evento {
 	}
 
 	public void setTemas(List<Tema> temas) throws EventoInvalidoException {
+		isSetTemas(temas);
+	}
+
+	private void isSetTemas(List<Tema> temas) throws EventoInvalidoException {
 		isNull(temas);
 		if (temas.size() == 0) {
 			throw new EventoInvalidoException("Nenhum tema");
