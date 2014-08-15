@@ -27,7 +27,7 @@ public class EventoTest {
 		temas.add(Tema.ARDUINO);
 		try {
 			new Evento("Python na cabeça", "Vamos programar em Python!", new Date(), temas);
-		} catch (EventoInvalidoException _) {
+		} catch (EventoInvalidoException e) {
 			fail();
 		}
 	}
