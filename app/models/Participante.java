@@ -31,17 +31,18 @@ public class Participante {
 	@MaxLength(value = 70)
 	private String email;
 
-	@ManyToOne
-	private Evento evento;
+	@NotNull
+	@MaxLength(value = 30)
+	private String senha;
 
 	public Participante() {
 	}
 
-	public Participante(String nome, String email, Evento evento)
+	public Participante(String nome, String email, String senha)
 			throws PessoaInvalidaException {
 		setNome(nome);
 		setEmail(email);
-		setEvento(evento);
+		setSenha(senha);
 	}
 
 	public String getNome() {
@@ -49,8 +50,8 @@ public class Participante {
 	}
 
 	public void setNome(String nome) throws PessoaInvalidaException {
-		if (nome == null)
-			throw new PessoaInvalidaException("Parametro nulo");
+		if (isNull(nome))
+			throw new PessoaInvalidaException("Nome nao pode ser nulo");
 		if (nome.length() > 70)
 			throw new PessoaInvalidaException("Nome longo");
 		this.nome = nome;
@@ -61,8 +62,8 @@ public class Participante {
 	}
 
 	public void setEmail(String email) throws PessoaInvalidaException {
-		if (email == null)
-			throw new PessoaInvalidaException("Parametro nulo");
+		if (isNull(email))
+			throw new PessoaInvalidaException("Email nao pode ser nulo");
 		if (!email.matches(EMAIL_PATTERN))
 			throw new PessoaInvalidaException("Email inválido");
 		if (email.length() > 70)
@@ -70,13 +71,22 @@ public class Participante {
 		this.email = email;
 	}
 
-	public Evento getEvento() {
-		return evento;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setEvento(Evento evento) throws PessoaInvalidaException {
-		if (evento == null)
-			throw new PessoaInvalidaException("Parametro nulo");
-		this.evento = evento;
+	public void setSenha(String senha) throws PessoaInvalidaException {
+		if (isNull(senha))
+			throw new PessoaInvalidaException("Senha nao pode ser nula");
+		if (senha.length() < 6)
+			throw new PessoaInvalidaException("Senha nao pode ter menos que 6 caracteres");
+		if (senha.length() > 30)
+			throw new PessoaInvalidaException("Senha nao pode ter mais que 30 caracteres");
+		this.senha = senha;
+	}
+
+	private boolean isNull(Object obj) {
+		return obj == null;
+		
 	}
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import models.Evento;
+
 /**
  * Serviços simples de um Data Access Object (DAO)
  */
@@ -48,6 +50,7 @@ public interface GenericDAO {
 
 	/**
 	 * Procura uma certa {@code className} pelo seu {@code attributeName}.
+	 * @param  
 	 */
 	<T> List<T> findByAttributeName(String className, String attributeName,
 			String attributeValue);

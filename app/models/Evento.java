@@ -40,7 +40,7 @@ public class Evento {
 	@Required
 	private Date data;
 
-	@OneToMany(mappedBy = "evento")
+	@OneToMany
 	private List<Participante> participantes = new ArrayList<>();
 
 	@ElementCollection
