@@ -45,7 +45,7 @@ public class Application extends Controller {
 			Evento evento;
 			Calendar calendar;
 	
-			List<Tema> temas = new ArrayList<>();
+			List<Tema> temas = new ArrayList<Tema>();
 			
 			temas.add(Tema.DESAFIOS);
 			temas.add(Tema.PROGRAMACAO);
@@ -57,7 +57,7 @@ public class Application extends Controller {
 			eventos.add(evento);
 			criarEvento(evento);
 			
-			temas = new ArrayList<>();
+			temas = new ArrayList<Tema>();
 			temas.add(Tema.ARDUINO);
 			temas.add(Tema.ELETRONICA);
 			
@@ -68,7 +68,7 @@ public class Application extends Controller {
 			eventos.add(evento);
 			criarEvento(evento);
 	
-			temas = new ArrayList<>();
+			temas = new ArrayList<Tema>();
 			temas.add(Tema.DESAFIOS);
 			temas.add(Tema.PROGRAMACAO);
 			
@@ -79,7 +79,7 @@ public class Application extends Controller {
 			eventos.add(evento);
 			criarEvento(evento);
 	
-			temas = new ArrayList<>();
+			temas = new ArrayList<Tema>();
 			temas.add(Tema.DESAFIOS);
 			temas.add(Tema.PROGRAMACAO);
 			
@@ -90,7 +90,7 @@ public class Application extends Controller {
 			eventos.add(evento);
 			criarEvento(evento);
 	
-			temas = new ArrayList<>();
+			temas = new ArrayList<Tema>();
 			temas.add(Tema.PROGRAMACAO);
 			temas.add(Tema.DESAFIOS);
 			
@@ -102,7 +102,7 @@ public class Application extends Controller {
 			eventos.add(evento);
 			criarEvento(evento);
 	
-			temas = new ArrayList<>();
+			temas = new ArrayList<Tema>();
 			temas.add(Tema.PROGRAMACAO);
 			temas.add(Tema.WEB);
 			
@@ -113,7 +113,7 @@ public class Application extends Controller {
 			eventos.add(evento);
 			criarEvento(evento);
 	
-			temas = new ArrayList<>();
+			temas = new ArrayList<Tema>();
 			temas.add(Tema.ELETRONICA);
 			temas.add(Tema.ARDUINO);
 			
@@ -124,7 +124,7 @@ public class Application extends Controller {
 			eventos.add(evento);
 			criarEvento(evento);
 	
-			temas = new ArrayList<>();
+			temas = new ArrayList<Tema>();
 			temas.add(Tema.ELETRONICA);
 			temas.add(Tema.ARDUINO);
 			
@@ -135,7 +135,7 @@ public class Application extends Controller {
 			eventos.add(evento);
 			criarEvento(evento);
 	
-			temas = new ArrayList<>();
+			temas = new ArrayList<Tema>();
 			temas.add(Tema.DESAFIOS);
 			
 			calendar = Calendar.getInstance();
@@ -145,7 +145,7 @@ public class Application extends Controller {
 			eventos.add(evento);
 			criarEvento(evento);
 
-			temas = new ArrayList<>();
+			temas = new ArrayList<Tema>();
 			temas.add(Tema.PROGRAMACAO);
 			temas.add(Tema.DESAFIOS);
 			

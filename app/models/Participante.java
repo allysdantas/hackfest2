@@ -3,7 +3,6 @@ package models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 import models.exceptions.PessoaInvalidaException;
@@ -50,8 +49,7 @@ public class Participante {
 	}
 
 	public void setNome(String nome) throws PessoaInvalidaException {
-		if (isNull(nome))
-			throw new PessoaInvalidaException("Nome nao pode ser nulo");
+		isNull(nome, "Nome");
 		if (nome.length() > 70)
 			throw new PessoaInvalidaException("Nome longo");
 		this.nome = nome;
@@ -62,8 +60,7 @@ public class Participante {
 	}
 
 	public void setEmail(String email) throws PessoaInvalidaException {
-		if (isNull(email))
-			throw new PessoaInvalidaException("Email nao pode ser nulo");
+		isNull(email, "Email");
 		if (!email.matches(EMAIL_PATTERN))
 			throw new PessoaInvalidaException("Email inválido");
 		if (email.length() > 70)
@@ -76,17 +73,22 @@ public class Participante {
 	}
 
 	public void setSenha(String senha) throws PessoaInvalidaException {
-		if (isNull(senha))
-			throw new PessoaInvalidaException("Senha nao pode ser nula");
+		
+		isNull(senha, "Senha");
+		
 		if (senha.length() < 6)
-			throw new PessoaInvalidaException("Senha nao pode ter menos que 6 caracteres");
+			throw new PessoaInvalidaException(
+					"Senha nao pode ter menos que 6 caracteres");
 		if (senha.length() > 30)
-			throw new PessoaInvalidaException("Senha nao pode ter mais que 30 caracteres");
+			throw new PessoaInvalidaException(
+					"Senha nao pode ter mais que 30 caracteres");
 		this.senha = senha;
 	}
 
-	private boolean isNull(Object obj) {
-		return obj == null;
-		
+	private void isNull(Object obj, String nome) throws PessoaInvalidaException {
+		if (obj == null) {
+			throw new PessoaInvalidaException(nome + " nao pode ser nulo");
+		}
+
 	}
 }

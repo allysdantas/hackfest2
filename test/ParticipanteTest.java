@@ -16,31 +16,6 @@ import org.junit.Test;
 
 public class ParticipanteTest {
 
-	private Evento evento;
-	private List<Tema> temas;
-
-	@Before
-	public void setUp() {
-		temas = new ArrayList<>();
-		temas.add(Tema.ARDUINO);
-		try {
-			evento = new Evento("Python na cabeça",
-					"Vamos programar em Python!", new Date(), temas);
-		} catch (EventoInvalidoException e) {
-			fail();
-		}
-	}
-
-//	@Test
-//	public void deveCriarUmParticipante() {
-//		try {
-//			new Participante("João José da Silva", "joao_jose@mail.com",
-//					"123456");
-//		} catch (PessoaInvalidaException e) {
-//			fail();
-//		}
-//	}
-
 	@Test
 	public void deveOcorrerErroNaSenha() {
 		
@@ -55,7 +30,7 @@ public class ParticipanteTest {
 			new Participante("Allys", "allys@outlook.com.br", null);
 			fail();
 		} catch (PessoaInvalidaException e) {
-			assertEquals("Senha nao pode ser nula", e.getMessage());
+			assertEquals("Senha nao pode ser nulo", e.getMessage());
 		}
 		
 		try {

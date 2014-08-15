@@ -75,7 +75,6 @@ public class EventoController extends Controller {
 		} else {
 			Evento evento = Application.getDao().findByEntityId(Evento.class, id);
 			Participante novoParticipante = participanteFormRequest.get();
-			//novoParticipante.setEvento(evento);
 			
 			Application.getDao().persist(novoParticipante);
 			Application.getDao().merge(novoParticipante);

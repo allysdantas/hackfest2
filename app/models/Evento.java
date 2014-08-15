@@ -41,14 +41,15 @@ public class Evento {
 	private Date data;
 
 	@OneToMany
-	private List<Participante> participantes = new ArrayList<>();
+	private List<Participante> participantes = new ArrayList<Participante>();
 
 	@ElementCollection
 	@Enumerated(value = EnumType.ORDINAL)
 	@NotNull
-	private List<Tema> temas = new ArrayList<>();
+	private List<Tema> temas = new ArrayList<Tema>();
 
 	public Evento() {
+
 	}
 
 	public Evento(String titulo, String descricao, Date data, List<Tema> temas)
@@ -84,34 +85,40 @@ public class Evento {
 	}
 
 	public void setTitulo(String titulo) throws EventoInvalidoException {
-		if (titulo == null)
-			throw new EventoInvalidoException("Parametro nulo");
-		if (titulo.length() > 40)
+		isNull(titulo);
+		if (titulo.length() > 40) {
 			throw new EventoInvalidoException("Título longo");
+		}
 		this.titulo = titulo;
 	}
 
 	public void setDescricao(String descricao) throws EventoInvalidoException {
-		if (descricao == null)
-			throw new EventoInvalidoException("Parametro nulo");
-		if (descricao.length() > 450)
+		isNull(descricao);
+		if (descricao.length() > 450) {
 			throw new EventoInvalidoException("Descrição longa");
+		}
 		this.descricao = descricao;
 	}
 
 	public void setData(Date data) throws EventoInvalidoException {
-		if (data == null)
-			throw new EventoInvalidoException("Parametro nulo");
-		if (data.compareTo(new Date()) < 0)
+		isNull(data);
+		if (data.compareTo(new Date()) < 0) {
 			throw new EventoInvalidoException("Data inválida");
+		}
 		this.data = data;
 	}
 
 	public void setTemas(List<Tema> temas) throws EventoInvalidoException {
-		if (temas == null)
-			throw new EventoInvalidoException("Parametro nulo");
-		if (temas.size() == 0)
+		isNull(temas);
+		if (temas.size() == 0) {
 			throw new EventoInvalidoException("Nenhum tema");
+		}
 		this.temas = temas;
+	}
+
+	private void isNull(Object obj) throws EventoInvalidoException {
+		if (obj == null) {
+			throw new EventoInvalidoException("Parametro nulo");
+		}
 	}
 }
