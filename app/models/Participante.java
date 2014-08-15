@@ -54,8 +54,9 @@ public class Participante {
 
 	private void isSetNome(String nome) throws PessoaInvalidaException {
 		isNull(nome, "Nome");
-		if (nome.length() > 70)
+		if (nome.length() > 70) {
 			throw new PessoaInvalidaException("Nome longo");
+		}
 		this.nome = nome;
 	}
 
@@ -69,10 +70,12 @@ public class Participante {
 
 	private void isSetEmail(String email) throws PessoaInvalidaException {
 		isNull(email, "Email");
-		if (!email.matches(EMAIL_PATTERN))
+		if (!email.matches(EMAIL_PATTERN)) {
 			throw new PessoaInvalidaException("Email inválido");
-		if (email.length() > 70)
+		}
+		if (email.length() > 70) {
 			throw new PessoaInvalidaException("Email longo");
+		}
 		this.email = email;
 	}
 
@@ -86,12 +89,14 @@ public class Participante {
 
 	private void isSetSenha(String senha) throws PessoaInvalidaException {
 		isNull(senha, "Senha");
-		if (senha.length() < 6)
+		if (senha.length() < 6) {
 			throw new PessoaInvalidaException(
 					"Senha nao pode ter menos que 6 caracteres");
-		if (senha.length() > 30)
+		}
+		if (senha.length() > 30) {
 			throw new PessoaInvalidaException(
 					"Senha nao pode ter mais que 30 caracteres");
+		}
 		this.senha = senha;
 	}
 
