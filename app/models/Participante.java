@@ -39,9 +39,9 @@ public class Participante {
 
 	public Participante(String nome, String email, String senha)
 			throws PessoaInvalidaException {
-		setNome(nome);
-		setEmail(email);
-		setSenha(senha);
+		isSetNome(nome);
+		isSetEmail(email);
+		isSetSenha(senha);
 	}
 
 	public String getNome() {
@@ -49,6 +49,10 @@ public class Participante {
 	}
 
 	public void setNome(String nome) throws PessoaInvalidaException {
+		isSetNome(nome);
+	}
+
+	private void isSetNome(String nome) throws PessoaInvalidaException {
 		isNull(nome, "Nome");
 		if (nome.length() > 70)
 			throw new PessoaInvalidaException("Nome longo");
@@ -60,6 +64,10 @@ public class Participante {
 	}
 
 	public void setEmail(String email) throws PessoaInvalidaException {
+		isSetEmail(email);
+	}
+
+	private void isSetEmail(String email) throws PessoaInvalidaException {
 		isNull(email, "Email");
 		if (!email.matches(EMAIL_PATTERN))
 			throw new PessoaInvalidaException("Email inválido");
@@ -73,9 +81,11 @@ public class Participante {
 	}
 
 	public void setSenha(String senha) throws PessoaInvalidaException {
-		
+		isSetSenha(senha);
+	}
+
+	private void isSetSenha(String senha) throws PessoaInvalidaException {
 		isNull(senha, "Senha");
-		
 		if (senha.length() < 6)
 			throw new PessoaInvalidaException(
 					"Senha nao pode ter menos que 6 caracteres");
@@ -89,6 +99,30 @@ public class Participante {
 		if (obj == null) {
 			throw new PessoaInvalidaException(nome + " nao pode ser nulo");
 		}
+	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		return result;
+	}
+
+	@Override
+	public String toString() {
+		return "Nome = " + nome + ", Email = " + email;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Participante) {
+			Participante p = (Participante) obj;
+			return this.getEmail().equals(p.getEmail())
+					&& this.getNome().equals(p.getNome());
+
+		}
+		return false;
 	}
 }
