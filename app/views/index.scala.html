@@ -1,17 +1,23 @@
-@main("CCFest") {
+@main("Hackfest 2") {
 
-<a class="arrow-left" href="#" style="z-index:11"></a> <a class="arrow-right" href="#" style="z-index:11"></a>
+<a class="arrow-left" href="#" style="z-index: 11"></a>
+<a class="arrow-right" href="#" style="z-index: 11"></a>
+<div class="row">
+	<div class="col-md-6 col-md-offset-4">
+		<a class="btn btn-info" style="float: right;" href="/logout">Sair</a>
+	</div>
+</div>
+
 <div class="swiper-container">
+
 	<div class="swiper-wrapper">
+
 		<div class="swiper-slide" style="background-color: rgb(13, 42, 70);">
-			@apresentacao()
-		</div>
+			@apresentacao()</div>
 		<div class="swiper-slide" style="background-color: rgb(13, 42, 70);">
-			@visualizacao()
-		</div>
+			@visualizacao()</div>
 		<div class="swiper-slide" style="background-color: rgb(13, 42, 70);">
-			@criacao()
-		</div>
+			@criacao()</div>
 	</div>
 	<div class="pagination"></div>
 </div>
@@ -27,18 +33,18 @@
 			grabCursor : true,
 			paginationClickable : true
 		})
-		
+
 		$('.arrow-left').on('click', function(e) {
 			e.preventDefault()
 			mySwiper.swipePrev()
 		})
-		
+
 		$('.arrow-right').on('click', function(e) {
 			e.preventDefault()
 			mySwiper.swipeNext()
 		})
-		
-		$('.content-slide').css('height',$('body').height()+'px')
+
+		$('.content-slide').css('height', $('body').height() + 'px')
 	});
 </script>
 }
