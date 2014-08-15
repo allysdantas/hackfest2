@@ -78,8 +78,6 @@ public class EventoController extends Controller {
 		if (participanteForm.hasErrors()) {
 			return badRequest();
 		} else {
-			Evento evento = Application.getDao().findByEntityId(Evento.class,
-					id);
 			Participante novoParticipante = participanteFormRequest.get();
 
 			Application.getDao().persist(novoParticipante);

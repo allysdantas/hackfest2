@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import models.Evento;
-
 /**
  * Serviços simples de um Data Access Object (DAO)
  */

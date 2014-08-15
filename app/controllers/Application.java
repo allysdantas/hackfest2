@@ -162,8 +162,7 @@ public class Application extends Controller {
 		}
 	}
 	
-	private static void criarParticipacoesFake(List<Evento> eventos) {
-		Random rnd = new Random();
+	private static void criarParticipacoesFake() {
 		try {
 			criarParticipacao(new Participante("Alberto Leça", "123456", "alberto_leca@mail.com"));
 			criarParticipacao(new Participante("Alberto Leça", "123456", "alberto_leca@mail.com"));

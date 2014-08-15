@@ -15,7 +15,7 @@ import play.mvc.Result;
 public class Registro extends Controller {
 
 	private static GenericDAO dao = new GenericDAOImpl();
-	static Form<Participante> registroForm = form(Participante.class)
+	private static Form<Participante> registroForm = form(Participante.class)
 			.bindFromRequest();
 
 	@Transactional
